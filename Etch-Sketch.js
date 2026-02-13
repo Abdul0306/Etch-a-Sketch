@@ -1,38 +1,53 @@
 const gridcontainer = document.querySelector("#grid-container")
 const colorpicker = document.querySelector("#colorpicker")
-const Colorbutton = document.querySelector("button")
-
-
-const gridSize = 16;
-const totalCell = gridSize * gridSize;
-
-
-for(let i = 0; i < totalCell; i++) {
-    
-    const cell = document.createElement("div")
-    
-    cell.classList.add("grid-cell")
-    
-    gridcontainer.appendChild(cell);
-
-}
+const sizeInput = document.querySelector("#sizeInput")
 
 
 let chosecolor = colorpicker.value;
 
-Colorbutton.style.backgroundColor = chosecolor;
-
 colorpicker.addEventListener('input', (event) => {
- 
-    chosecolor = event.target.value;
-  
-    Colorbutton.style.backgroundColor = chosecolor;
 
+    chosecolor = event.target.value;
+
+    colorpicker.style.backgroundColor = chosecolor;
 });
 
-
-cell.addEventListener("mouseenter", () =>{
-
-        cell.style.backgroundColor = chosecolor;
+function newsize(size) {
     
+    gridcontainer.innerHTML = "";
+
+    gridcontainer.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+
+    gridcontainer.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+    
+    for (let i = 0; i < size * size; i++) {
+        
+        const cell = document.createElement("div");
+       
+        cell.classList.add("grid-cell");
+
+        cell.addEventListener("mouseenter", () => {
+           
+            cell.style.backgroundColor = chosecolor;
+        });
+
+        gridcontainer.appendChild(cell);
+    }
+}
+
+
+if (sizeInput) {
+    newsize(parseInt(sizeInput.value, 10) || 16);
+
+    sizeInput.addEventListener('change', (e) => {
+
+        const newSize = parseInt(e.target.value, 10) || 16;
+
+        newsize(newSize);
     });
+
+} else {
+   
+    newsize(16);
+}

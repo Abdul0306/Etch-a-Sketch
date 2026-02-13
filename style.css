@@ -1,22 +1,21 @@
 
 body {
        margin: 0;
-    min-height: 130vh;
+    min-height: 111h;
 display: flex;
 flex-direction: column;
 align-items: center;
+background-color: #534b4b63;
 
 }
 
 #grid-container {
-    display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
     width: 600px;
     height: 600px;
-    border: 2px solid;
+    border: 2px solid rgb(177, 171, 150);
     background-color: white;
-    margin-top: 158px;
+    margin-top: 15px;
+    display: grid;
     
 
     
@@ -24,7 +23,7 @@ align-items: center;
 
 
 .grid-cell {
-  
+  border: 1px solid rgb(177, 171, 150);
     box-sizing: border-box;
 }
 
@@ -34,17 +33,22 @@ align-items: center;
 }
 
 
-.b{
+input[type= "color"] {
     
-  
+ width: 140%;
+   border: none;
+   height: 140%;
+   outline: none;
+   transform: translate(-20px, -20px);
     
-}   
+}
 
-
-#Colobutton{
-    border: 1px solid grey;
-    padding: 30px 20px;
-    position: relative;
-    right: 232px;
-    top: 150px;
+#colorInput{
+     width: 100px;
+   height: 100px;
+   overflow: hidden;
+   border-radius: 200rem;
+   position: relative;
+   top: 150px;
+   left: -399px;
 }
